@@ -13,5 +13,8 @@ func main() {
 	http.HandleFunc("/api/", api.HandleLicense)
 
 	log.Print("all Handlers registered!")
-	http.ListenAndServe("[::1]:8080", nil)
+	err := http.ListenAndServe("[::1]:8080", nil)
+	if err != nil {
+		log.Printf("http.ListenAndServe: %#q", err)
+	}
 }
